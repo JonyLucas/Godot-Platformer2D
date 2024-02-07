@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dykgpa1v0ptg7"]
+
+[ext_resource type="TileSet" uid="uid://dilxupjg2sltw" path="res://resources/environment_tiles.tres" id="1_wuse8"]
+[ext_resource type="Texture2D" uid="uid://c8xrgcxjfy3dk" path="res://sprites/player_01.png" id="2_aass3"]
+[ext_resource type="Script" path="res://scenes/Player.gd" id="2_rhqo2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lihqt"]
+height = 26.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+tile_set = ExtResource("1_wuse8")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 327672, 0, 0, 327673, 0, 0, 327674, 0, 0, 327675, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(-103, 48)
+script = ExtResource("2_rhqo2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture_filter = 1
+texture = ExtResource("2_aass3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_lihqt")
+
+[node name="Camera2D" type="Camera2D" parent="."]
