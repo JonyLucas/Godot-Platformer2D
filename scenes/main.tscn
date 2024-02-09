@@ -1,11 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dykgpa1v0ptg7"]
+[gd_scene load_steps=3 format=3 uid="uid://dykgpa1v0ptg7"]
 
 [ext_resource type="TileSet" uid="uid://dilxupjg2sltw" path="res://resources/environment_tiles.tres" id="1_wuse8"]
-[ext_resource type="Texture2D" uid="uid://c8xrgcxjfy3dk" path="res://sprites/player_01.png" id="2_aass3"]
-[ext_resource type="Script" path="res://scenes/Player.gd" id="2_rhqo2"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lihqt"]
-height = 26.0
+[ext_resource type="PackedScene" uid="uid://b1vl7xbkfilmq" path="res://scenes/player.tscn" id="2_h34px"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -13,18 +9,8 @@ height = 26.0
 texture_filter = 1
 tile_set = ExtResource("1_wuse8")
 format = 2
-layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 327672, 0, 0, 327673, 0, 0, 327674, 0, 0, 327675, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0)
+layer_0/tile_data = PackedInt32Array(458753, 131073, 10, 458752, 65537, 10, 524287, 65537, 10, 524286, 65537, 10, 524285, 65537, 10, 524284, 65537, 10, 524283, 65537, 10, 524282, 65537, 10, 524281, 65537, 10, 524280, 65537, 10, 524279, 65537, 10, 524289, 131073, 11, 524288, 65537, 11, 589823, 65537, 11, 589822, 65537, 11, 589821, 65537, 11, 589820, 65537, 11, 589819, 65537, 11, 589818, 65537, 11, 589817, 65537, 11, 589816, 65537, 11, 589815, 65537, 11, 393217, 131073, 9, 393216, 65537, 9, 458751, 65537, 9, 458750, 65537, 9, 458749, 65537, 9, 458748, 65537, 9, 458747, 196609, 10, 458746, 65537, 10, 458745, 65537, 10, 458744, 65537, 10, 458743, 65537, 10, 458758, 262145, 10, 393222, 1, 10, 327686, 1, 10, 262150, 1, 9, 262152, 131073, 9, 262151, 65537, 9, 327687, 65537, 10, 327688, 196609, 10, 524295, 65537, 11, 458759, 65537, 10, 393223, 65537, 10, 524294, 65537, 11, 393224, 65537, 10, 65539, 131073, 11, 65538, 65537, 11, 3, 131073, 9, 2, 65537, 9, 65537, 65537, 11, 1, 65537, 9, 0, 1, 9, 65536, 1, 11, 327689, 131073, 9, 393225, 131073, 10, 458761, 131073, 10, 524297, 131073, 11, 524296, 65537, 11, 458760, 65537, 10, 393211, 131073, 10, 393207, 262145, 10, 393208, 65537, 10, 393209, 65537, 10, 393210, 65537, 10, 327675, 131073, 9, 327674, 65537, 9, 327673, 65537, 9, 327672, 65537, 9, 327671, 1, 9, 458742, 65537, 10, 458741, 65537, 10, 458740, 65537, 10, 458739, 65537, 10, 458738, 1, 10, 524274, 1, 10, 589810, 1, 11, 589811, 65537, 11, 589812, 65537, 11, 524278, 65537, 10, 524277, 65537, 10, 524276, 65537, 10, 524275, 65537, 10, 393202, 1, 9, 393203, 65537, 9, 393204, 65537, 9, 393206, 65537, 9, 393205, 65537, 9, 589814, 65537, 11, 589813, 65537, 11, 524293, 65537, 11, 458757, 65537, 9, 458756, 1, 9, 524292, 1, 11)
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(-103, 48)
-script = ExtResource("2_rhqo2")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture_filter = 1
-texture = ExtResource("2_aass3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(0, -1)
-shape = SubResource("CapsuleShape2D_lihqt")
+[node name="Player" parent="." instance=ExtResource("2_h34px")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
