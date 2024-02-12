@@ -6,23 +6,33 @@ extends CharacterBody2D
 @export var gravity = 300.0
 @export var jump_force = 200.0
 @export var jump_force_multiplier = 3.0
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
+var reset_coyote_timer = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var move_direction = get_move_direction()
 	update_velocity(move_direction, delta)
+	update_animation()
 	move_and_slide()
 
-func get_move_direction() -> Vector2:
+func get_move_direction() -> Vector2:	
 	var direction = Vector2()
 	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	direction.y = -jump_force if Input.is_action_just_pressed("jump") and is_on_floor() else 0.0
+	direction.y = -jump_force if check_jump_condition() and Input.is_action_just_pressed("jump") else 0.0
 	return direction
+
+func check_jump_condition() -> bool:
+	if is_on_floor():
+		reset_coyote_timer = true
+		return true
+	elif !$CoyoteTimer.is_stopped():
+		return true
+	else:
+		if reset_coyote_timer:
+			$CoyoteTimer.start()
+			reset_coyote_timer = false
+
+		return false
 
 func update_velocity(move_direction: Vector2, delta: float):
 	if move_direction.x == 0:
@@ -36,3 +46,13 @@ func update_velocity(move_direction: Vector2, delta: float):
 		velocity.y += gravity * jump_force_multiplier * delta + move_direction.y
 	else:
 		velocity.y += gravity * delta + move_direction.y
+
+
+func update_animation():
+	if !is_on_floor():
+		$AnimatedSprite2D.play("jump")
+	elif velocity.x != 0:
+		$AnimatedSprite2D.play("run")
+		$AnimatedSprite2D.flip_h = velocity.x < 0
+	else:
+		$AnimatedSprite2D.play("idle")

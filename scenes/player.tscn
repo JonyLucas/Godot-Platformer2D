@@ -1,10 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1vl7xbkfilmq"]
+[gd_scene load_steps=6 format=3 uid="uid://b1vl7xbkfilmq"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_xilro"]
 [ext_resource type="Texture2D" uid="uid://c8xrgcxjfy3dk" path="res://sprites/player_01.png" id="2_rxejl"]
+[ext_resource type="Texture2D" uid="uid://bi1r410sxynbr" path="res://sprites/player_02.png" id="3_83ib5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lihqt"]
 height = 26.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d6otl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rxejl")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_83ib5")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rxejl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_83ib5")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_xilro")
@@ -14,11 +45,16 @@ gravity = 1500.0
 jump_force = 500.0
 jump_force_multiplier = 5.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(0, -12)
-texture = ExtResource("2_rxejl")
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_lihqt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_d6otl")
+animation = &"idle"
