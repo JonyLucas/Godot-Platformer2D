@@ -42,6 +42,12 @@ jump={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Default"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Coins"
+
 [rendering]
 
 2d/snap/snap_2d_vertices_to_pixel=true

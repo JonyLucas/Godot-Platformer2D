@@ -58,6 +58,9 @@ func update_animation():
 		$AnimatedSprite2D.play("jump")
 	elif velocity.x != 0:
 		$AnimatedSprite2D.play("run")
-		$AnimatedSprite2D.flip_h = velocity.x < 0
+		$AnimatedSprite2D.flip_h = velocity.x > 0
 	else:
 		$AnimatedSprite2D.play("idle")
+
+func collect_coin():
+	pass

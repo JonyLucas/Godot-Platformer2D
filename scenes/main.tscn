@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dykgpa1v0ptg7"]
+[gd_scene load_steps=5 format=3 uid="uid://dykgpa1v0ptg7"]
 
 [ext_resource type="TileSet" uid="uid://dilxupjg2sltw" path="res://resources/environment_tiles.tres" id="1_wuse8"]
 [ext_resource type="PackedScene" uid="uid://b1vl7xbkfilmq" path="res://scenes/player.tscn" id="2_h34px"]
 [ext_resource type="Script" path="res://scripts/Camera.gd" id="3_3nj1q"]
+[ext_resource type="PackedScene" uid="uid://dyk268xdqq7vr" path="res://scenes/coin.tscn" id="4_p4e1s"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -26,3 +27,14 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 script = ExtResource("3_3nj1q")
 background_color = Color(0.87451, 0.964706, 0.960784, 1)
+
+[node name="Coins" type="Node" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource("4_p4e1s")]
+position = Vector2(52, -11)
+
+[node name="Coin2" parent="Coins" instance=ExtResource("4_p4e1s")]
+position = Vector2(104, 48)
+
+[node name="Coin3" parent="Coins" instance=ExtResource("4_p4e1s")]
+position = Vector2(136, 48)

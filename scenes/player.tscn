@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1vl7xbkfilmq"]
+[gd_scene load_steps=7 format=3 uid="uid://b1vl7xbkfilmq"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_xilro"]
-[ext_resource type="Texture2D" uid="uid://c8xrgcxjfy3dk" path="res://sprites/player_01.png" id="2_rxejl"]
-[ext_resource type="Texture2D" uid="uid://bi1r410sxynbr" path="res://sprites/player_02.png" id="3_83ib5"]
+[ext_resource type="Texture2D" uid="uid://c8xrgcxjfy3dk" path="res://sprites/player/player_01.png" id="2_1rbkr"]
+[ext_resource type="Texture2D" uid="uid://bi1r410sxynbr" path="res://sprites/player/player_02.png" id="3_blueq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lihqt"]
 height = 26.0
@@ -11,7 +11,7 @@ height = 26.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_rxejl")
+"texture": ExtResource("2_1rbkr")
 }],
 "loop": true,
 "name": &"idle",
@@ -19,7 +19,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_83ib5")
+"texture": ExtResource("3_blueq")
 }],
 "loop": true,
 "name": &"jump",
@@ -27,17 +27,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_rxejl")
+"texture": ExtResource("2_1rbkr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_83ib5")
+"texture": ExtResource("3_blueq")
 }],
 "loop": true,
 "name": &"run",
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_v8fnr"]
+radius = 16.0
+
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_xilro")
 speed_acceleration = 1000.0
 max_speed = 200.0
@@ -58,3 +63,11 @@ texture_filter = 1
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_d6otl")
 animation = &"idle"
+
+[node name="CollectArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_v8fnr")
