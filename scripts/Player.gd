@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var jump_force = 200.0
 @export var jump_force_multiplier = 3.0
 var reset_coyote_timer = true
+var has_double_jump = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -24,8 +25,12 @@ func get_move_direction() -> Vector2:
 func check_jump_condition() -> bool:
 	if is_on_floor():
 		reset_coyote_timer = true
+		has_double_jump = true
 		return true
 	elif !$CoyoteTimer.is_stopped():
+		return true
+	elif has_double_jump and Input.is_action_just_pressed("jump"):
+		has_double_jump = false
 		return true
 	else:
 		if reset_coyote_timer:
