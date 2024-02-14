@@ -4,3 +4,5 @@ extends Camera2D
 
 func _ready():
 	RenderingServer.set_default_clear_color(background_color)
+
+

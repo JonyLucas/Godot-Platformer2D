@@ -9,7 +9,8 @@ extends CharacterBody2D
 var reset_coyote_timer = true
 var has_double_jump = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+signal player_death_signal
+
 func _process(delta):
 	var move_direction = get_move_direction()
 	update_velocity(move_direction, delta)
@@ -64,3 +65,7 @@ func update_animation():
 
 func collect_coin():
 	pass
+
+func die():
+	print("Player died")
+	emit_signal("player_death_signal")

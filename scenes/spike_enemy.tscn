@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3gxef2x2otc0"]
+
+[ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_fhcg7"]
+[ext_resource type="Texture2D" uid="uid://bc0rq01j3kyqy" path="res://sprites/enemy/tile_0015.png" id="1_vq15o"]
+[ext_resource type="Texture2D" uid="uid://dj6p58o01b54o" path="res://sprites/enemy/tile_0016.png" id="2_el1bg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r3xeq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vq15o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_el1bg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jfv18"]
+radius = 8.0
+
+[node name="Node2D" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 3
+script = ExtResource("1_fhcg7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_r3xeq")
+frame_progress = 0.772781
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_jfv18")

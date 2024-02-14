@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1vl7xbkfilmq"]
+[gd_scene load_steps=8 format=3 uid="uid://b1vl7xbkfilmq"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_xilro"]
 [ext_resource type="Texture2D" uid="uid://c8xrgcxjfy3dk" path="res://sprites/player/player_01.png" id="2_1rbkr"]
 [ext_resource type="Texture2D" uid="uid://bi1r410sxynbr" path="res://sprites/player/player_02.png" id="3_blueq"]
+[ext_resource type="Script" path="res://scripts/Camera.gd" id="4_7uq51"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lihqt"]
 height = 26.0
@@ -40,9 +41,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8fnr"]
 radius = 16.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
-collision_mask = 7
+collision_mask = 15
 script = ExtResource("1_xilro")
 speed_acceleration = 1000.0
 max_speed = 200.0
@@ -71,3 +72,16 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
 position = Vector2(0, -13)
 shape = SubResource("CircleShape2D_v8fnr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 0.5
+drag_bottom_margin = 0.5
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("4_7uq51")
+background_color = Color(0.87451, 0.964706, 0.960784, 1)
