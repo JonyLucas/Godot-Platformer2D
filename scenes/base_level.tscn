@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://i3wsgqyvc1ne"]
+[gd_scene load_steps=7 format=3 uid="uid://i3wsgqyvc1ne"]
 
 [ext_resource type="Script" path="res://scripts/LevelManager.gd" id="1_bf0tg"]
 [ext_resource type="TileSet" uid="uid://dilxupjg2sltw" path="res://resources/environment_tiles.tres" id="1_vpdht"]
 [ext_resource type="PackedScene" uid="uid://b1vl7xbkfilmq" path="res://scenes/player.tscn" id="2_58gl5"]
 [ext_resource type="PackedScene" uid="uid://dyk268xdqq7vr" path="res://scenes/coin.tscn" id="4_gcjdn"]
 [ext_resource type="PackedScene" uid="uid://cbcu0jrby1esd" path="res://scenes/spikes.tscn" id="5_f3dl4"]
+[ext_resource type="PackedScene" uid="uid://b3gxef2x2otc0" path="res://scenes/spike_enemy.tscn" id="6_nmgh1"]
 
 [node name="BaseLevel" type="Node"]
 script = ExtResource("1_bf0tg")
@@ -30,13 +31,19 @@ position = Vector2(104, 48)
 [node name="Coin3" parent="Coins" instance=ExtResource("4_gcjdn")]
 position = Vector2(136, 48)
 
-[node name="Node" type="Node" parent="."]
+[node name="Spikes" type="Node" parent="."]
 
-[node name="Spikes" parent="Node" instance=ExtResource("5_f3dl4")]
+[node name="Spikes" parent="Spikes" instance=ExtResource("5_f3dl4")]
 position = Vector2(-80, 64)
 
-[node name="Spikes2" parent="Node" instance=ExtResource("5_f3dl4")]
+[node name="Spikes2" parent="Spikes" instance=ExtResource("5_f3dl4")]
 position = Vector2(-56, 96)
 
-[node name="Spikes3" parent="Node" instance=ExtResource("5_f3dl4")]
+[node name="Spikes3" parent="Spikes" instance=ExtResource("5_f3dl4")]
 position = Vector2(-40, 96)
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Node2D" parent="Enemies" instance=ExtResource("6_nmgh1")]
+position = Vector2(-200, 80)
+max_speed = 2000
