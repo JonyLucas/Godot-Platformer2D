@@ -8,7 +8,6 @@ var target_x_position = 0
 
 func _ready():
 	target_x_position = position.x + move_offset
-	print(target_x_position)
 
 func _process(delta):
 	velocity.x = direction.x * max_speed * delta
@@ -23,3 +22,6 @@ func _process(delta):
 		target_x_position = position.x + move_offset
 
 	$AnimatedSprite2D.flip_h = direction.x > 0
+
+func die():
+	queue_free()

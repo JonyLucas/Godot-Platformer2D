@@ -33,7 +33,7 @@ func get_move_direction() -> Vector2:
 	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	direction.y = -jump_force if check_jump_condition() and Input.is_action_just_pressed("jump") else 0.0
 	
-	if Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("dash") and current_state == state.NORMAL:
 		current_state = state.DASHING
 		start_dashing = true
 
@@ -82,18 +82,26 @@ func update_animation():
 func process_dashing(delta: float):
 	if start_dashing:
 		$AnimatedSprite2D.play("jump")
+		$DashArea/CollisionShape2D.disabled = false
 		velocity.x = max_dash_speed if $AnimatedSprite2D.flip_h else -max_dash_speed
 		velocity.y = 0.0
 		start_dashing = false
 	else:
 		velocity.x = lerp(velocity.x, 0.0, dash_desacceleration_rate * delta)
 		if abs(velocity.x) <= min_dash_speed:
+			$DashArea/CollisionShape2D.disabled = true
 			current_state = state.NORMAL
 	move_and_slide()
 
 func collect_coin():
 	pass
 
-func die():
-	print("Player died")
+func die(is_enemy_hazard: bool):
+	if is_enemy_hazard and current_state == state.DASHING:
+		return
 	emit_signal("player_death_signal")
+
+
+func _on_dash_area_entered(body:Node2D):
+	if body.is_in_group("enemy"):
+		body.die()
