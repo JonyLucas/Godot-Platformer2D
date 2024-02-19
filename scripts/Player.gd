@@ -1,26 +1,42 @@
 extends CharacterBody2D
 
+enum state { NORMAL, DASHING }
+
 @export var speed_acceleration = 100.0
 @export var max_speed = 500.0
+@export var max_dash_speed = 1000.0
+@export var min_dash_speed = 500.0
 @export var desacceleration_rate = 50.0
+@export var dash_desacceleration_rate = 6.0
 @export var gravity = 300.0
 @export var jump_force = 200.0
 @export var jump_force_multiplier = 3.0
 var reset_coyote_timer = true
 var has_double_jump = true
+var current_state = state.NORMAL
+var start_dashing = false
 
 signal player_death_signal
 
 func _process(delta):
 	var move_direction = get_move_direction()
-	update_velocity(move_direction, delta)
-	update_animation()
-	move_and_slide()
+	match current_state:
+		state.NORMAL:
+			update_velocity(move_direction, delta)
+			update_animation()
+			move_and_slide()
+		state.DASHING:
+			process_dashing(delta)
 
 func get_move_direction() -> Vector2:	
 	var direction = Vector2()
 	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	direction.y = -jump_force if check_jump_condition() and Input.is_action_just_pressed("jump") else 0.0
+	
+	if Input.is_action_just_pressed("dash"):
+		current_state = state.DASHING
+		start_dashing = true
+
 	return direction
 
 func check_jump_condition() -> bool:
@@ -62,6 +78,18 @@ func update_animation():
 		$AnimatedSprite2D.flip_h = velocity.x > 0
 	else:
 		$AnimatedSprite2D.play("idle")
+
+func process_dashing(delta: float):
+	if start_dashing:
+		$AnimatedSprite2D.play("jump")
+		velocity.x = max_dash_speed if $AnimatedSprite2D.flip_h else -max_dash_speed
+		velocity.y = 0.0
+		start_dashing = false
+	else:
+		velocity.x = lerp(velocity.x, 0.0, dash_desacceleration_rate * delta)
+		if abs(velocity.x) <= min_dash_speed:
+			current_state = state.NORMAL
+	move_and_slide()
 
 func collect_coin():
 	pass
