@@ -93,9 +93,6 @@ func process_dashing(delta: float):
 			current_state = state.NORMAL
 	move_and_slide()
 
-func collect_coin():
-	pass
-
 func die(is_enemy_hazard: bool):
 	if is_enemy_hazard and current_state == state.DASHING:
 		return

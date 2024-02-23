@@ -3,10 +3,15 @@ extends Node
 var player_scene = preload("res://scenes/player.tscn")
 var spawn_position = Vector2(0, 0)
 var player_ref
+var total_coins = 0
+var collected_coins = 0
+
+signal coin_collected_signal
 
 func _ready():
 	spawn_position = $PlayerNode/Player.global_position
 	register_player($PlayerNode/Player)
+	total_coins = get_tree().get_nodes_in_group("coin").size()
 
 func register_player(playerNode):
 	player_ref = playerNode
@@ -22,3 +27,7 @@ func on_player_death():
 	player_ref.queue_free()
 	create_player()
 
+func coin_collected():
+	collected_coins += 1
+	print("Collected coins: ", collected_coins)
+	emit_signal("coin_collected_signal", collected_coins, total_coins)

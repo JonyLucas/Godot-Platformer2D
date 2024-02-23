@@ -113,7 +113,7 @@ _data = {
 "pickup": SubResource("Animation_j3m5s")
 }
 
-[node name="Coin" type="Node2D"]
+[node name="Coin" type="Node2D" groups=["coin"]]
 script = ExtResource("1_q8bo2")
 
 [node name="Area2D" type="Area2D" parent="."]
