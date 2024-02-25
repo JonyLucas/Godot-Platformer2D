@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dykgpa1v0ptg7"]
+[gd_scene load_steps=3 format=3 uid="uid://dykgpa1v0ptg7"]
 
 [ext_resource type="PackedScene" uid="uid://dl6xscge5jymk" path="res://scenes/levels/level_01.tscn" id="1_k2m3o"]
+[ext_resource type="PackedScene" uid="uid://bl05cjdene48l" path="res://scenes/canvas.tscn" id="2_t6dd5"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="BaseLevel" parent="." instance=ExtResource("1_k2m3o")]
+
+[node name="Canvas" parent="." instance=ExtResource("2_t6dd5")]

@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bhd8xgwk0olmx"]
+
+[ext_resource type="FontFile" uid="uid://deuo7x16ho58i" path="res://resources/fonts/BitPotion.ttf" id="1_bqdk4"]
+
+[resource]
+default_font = ExtResource("1_bqdk4")
