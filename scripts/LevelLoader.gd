@@ -14,11 +14,11 @@ func change_level(level_index: int) -> void:
 		current_level_index = 0
 	
 	if current_level != null:
+		$"/root/Main/LevelLoader".remove_child(current_level)
 		current_level.queue_free()
 	
 	current_level = levels[current_level_index].instantiate()
 	$"/root/Main/LevelLoader".add_child(current_level)
 
 func load_next_level() -> void:
-	print("Loading next level")
 	change_level(current_level_index + 1)
