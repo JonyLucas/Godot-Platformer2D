@@ -15,7 +15,7 @@ func change_level(level_index: int) -> void:
 	
 	if current_level != null:
 		current_level.queue_free()
-
+	
 	current_level = levels[current_level_index].instantiate()
 	$"/root/Main/LevelLoader".add_child(current_level)
 

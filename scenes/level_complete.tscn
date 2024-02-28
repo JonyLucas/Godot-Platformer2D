@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf2l2f1bkjxv0"]
+
+[ext_resource type="Theme" uid="uid://bhd8xgwk0olmx" path="res://resources/label_theme.tres" id="1_ckgrq"]
+[ext_resource type="Script" path="res://scripts/LevelComplete.gd" id="1_m0jbw"]
+
+[node name="LevelComplete" type="CanvasLayer"]
+script = ExtResource("1_m0jbw")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ckgrq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Level Completed!"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Next Level"

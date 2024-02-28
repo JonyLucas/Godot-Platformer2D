@@ -1,14 +1,20 @@
 extends Node
 
 var player_scene = preload("res://scenes/player.tscn")
+var level_completed_scene = preload("res://scenes/level_complete.tscn")
 var spawn_position = Vector2(0, 0)
 var player_ref
 var total_coins = 0
 var collected_coins = 0
 
+var is_level_completed: bool
+var is_paused: bool
+
 signal coin_collected_signal
 
 func _ready():
+	is_level_completed = false
+	is_paused = false
 	spawn_position = $PlayerNode/Player.global_position
 	register_player($PlayerNode/Player)
 	total_coins = get_tree().get_nodes_in_group("coin").size()
@@ -35,4 +41,6 @@ func coin_collected():
 	emit_signal("coin_collected_signal", collected_coins, total_coins)
 
 func on_win_condition():
-	$"/root/Main/LevelLoader".load_next_level()
+	is_level_completed = true
+	var level_complete = level_completed_scene.instantiate()
+	add_child(level_complete)

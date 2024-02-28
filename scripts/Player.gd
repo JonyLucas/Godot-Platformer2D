@@ -15,10 +15,18 @@ var reset_coyote_timer = true
 var has_double_jump = true
 var current_state = state.NORMAL
 var start_dashing = false
+var level_manager
 
 signal player_death_signal
 
+func _ready():
+	print("Player ready")
+	level_manager = get_tree().get_first_node_in_group("level_manager")
+
 func _process(delta):
+	if level_manager and level_manager.is_paused or level_manager.is_level_completed:
+		return
+
 	var move_direction = get_move_direction()
 	match current_state:
 		state.NORMAL:
