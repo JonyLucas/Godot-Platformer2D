@@ -22,7 +22,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Flag" type="Node2D"]
+[node name="Flag" type="Node2D" groups=["goal"]]
 script = ExtResource("1_qvfad")
 
 [node name="Area2D" type="Area2D" parent="."]
