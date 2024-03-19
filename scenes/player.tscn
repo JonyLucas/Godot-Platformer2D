@@ -79,7 +79,7 @@ collision_mask = 4
 position = Vector2(0, -13)
 shape = SubResource("CircleShape2D_v8fnr")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." groups=["camera"]]
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0

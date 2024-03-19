@@ -24,4 +24,5 @@ func _process(delta):
 	$AnimatedSprite2D.flip_h = direction.x > 0
 
 func die():
+	$"/root/Helpers".apply_camera_shake(0, 1)
 	queue_free()

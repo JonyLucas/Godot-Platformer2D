@@ -79,6 +79,7 @@ func update_velocity(move_direction: Vector2, delta: float):
 
 func update_animation():
 	if !is_on_floor():
+		$"/root/Helpers".apply_camera_shake(0, 0.1)
 		$AnimatedSprite2D.play("jump")
 	elif velocity.x != 0:
 		$AnimatedSprite2D.play("run")
@@ -88,6 +89,7 @@ func update_animation():
 
 func process_dashing(delta: float):
 	if start_dashing:
+		$"/root/Helpers".apply_camera_shake(0, 0.4)
 		$AnimatedSprite2D.play("jump")
 		$DashArea/CollisionShape2D.disabled = false
 		velocity.x = max_dash_speed if $AnimatedSprite2D.flip_h else -max_dash_speed
@@ -103,6 +105,8 @@ func process_dashing(delta: float):
 func die(is_enemy_hazard: bool):
 	if is_enemy_hazard and current_state == state.DASHING:
 		return
+
+	$"/root/Helpers".apply_camera_shake(0, 1)	
 	emit_signal("player_death_signal")
 
 
