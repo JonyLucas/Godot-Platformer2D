@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1vl7xbkfilmq"]
+[gd_scene load_steps=10 format=3 uid="uid://b1vl7xbkfilmq"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_xilro"]
 [ext_resource type="Texture2D" uid="uid://c8xrgcxjfy3dk" path="res://sprites/player/player_01.png" id="2_1rbkr"]
@@ -40,6 +40,9 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8fnr"]
 radius = 16.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ykx57"]
+seed = 123
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4yjkr"]
 size = Vector2(40, 12)
@@ -88,6 +91,8 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 script = ExtResource("4_7uq51")
 background_color = Color(0.87451, 0.964706, 0.960784, 1)
+shake_noise = SubResource("FastNoiseLite_ykx57")
+noise_sample_step = 500.0
 
 [node name="DashArea" type="Area2D" parent="."]
 collision_layer = 2
