@@ -16,6 +16,7 @@ var has_double_jump = true
 var current_state = state.NORMAL
 var start_dashing = false
 var level_manager
+var player_death_scene = preload("res://scenes/player_death.tscn")
 
 signal player_death_signal
 
@@ -107,6 +108,11 @@ func die(is_enemy_hazard: bool):
 		return
 
 	$"/root/Helpers".apply_camera_shake(0, 1)	
+	var death_scene = player_death_scene.instantiate()
+	add_child(death_scene)
+	$AnimatedSprite2D.visible = false
+	death_scene.global_position = global_position
+	death_scene.velocity = velocity
 	emit_signal("player_death_signal")
 
 

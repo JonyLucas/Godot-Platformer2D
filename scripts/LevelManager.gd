@@ -32,6 +32,8 @@ func create_player():
 	register_player(player)
 
 func on_player_death():
+	var timer = get_tree().create_timer(1)
+	await timer.timeout
 	player_ref.queue_free()
 	create_player()
 
