@@ -87,6 +87,7 @@ particles_anim_loop = false
 [node name="PlayerDeath" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_2vmv1")
+metadata/_edit_group_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -98,13 +99,10 @@ autoplay = "death_animation"
 position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_a72fo")
 
-[node name="Visuals" type="Node" parent="."]
+[node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 texture_filter = 1
-position = Vector2(0, -8)
-rotation = 1.5708
-scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("1_ej1mf")
 offset = Vector2(0, -12)
 
