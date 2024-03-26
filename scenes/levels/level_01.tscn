@@ -306,7 +306,11 @@ rotation = -3.14159
 position = Vector2(320, -128)
 move_offset = 80
 
-[node name="EnemySpawner" parent="Enemies" index="1" instance=ExtResource("5_fpsnm")]
+[node name="Enemy2" parent="Enemies" index="1" instance=ExtResource("3_7bge1")]
+position = Vector2(-112, -48)
+move_offset = 80
+
+[node name="EnemySpawner" parent="Enemies" index="2" instance=ExtResource("5_fpsnm")]
 position = Vector2(128, -112)
 
 [node name="Coin" parent="Coins" index="0" instance=ExtResource("4_8rv0m")]
