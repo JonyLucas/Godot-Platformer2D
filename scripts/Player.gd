@@ -90,6 +90,7 @@ func update_animation():
 
 func process_dashing(delta: float):
 	if start_dashing:
+		$DashParticles.emitting = true
 		$"/root/Helpers".apply_camera_shake(0, 0.4)
 		$AnimatedSprite2D.play("jump")
 		$DashArea/CollisionShape2D.disabled = false
