@@ -311,7 +311,7 @@ position = Vector2(-112, -48)
 move_offset = 80
 
 [node name="EnemySpawner" parent="Enemies" index="2" instance=ExtResource("5_fpsnm")]
-position = Vector2(128, -112)
+position = Vector2(64, 0)
 
 [node name="Coin" parent="Coins" index="0" instance=ExtResource("4_8rv0m")]
 position = Vector2(-72, -64)

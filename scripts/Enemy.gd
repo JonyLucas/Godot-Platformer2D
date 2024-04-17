@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var max_speed = 200
 @export var gravity = 500
 @export var move_offset = 5
+@export var is_spawning = true
 
 var enemy_death_scene = preload("res://Scenes/enemy_death.tscn")
 var direction = Vector2.RIGHT
@@ -12,6 +13,9 @@ func _ready():
 	target_x_position = position.x + move_offset
 
 func _process(delta):
+	if is_spawning:
+		return
+	
 	velocity.x = direction.x * max_speed * delta
 	velocity.y += gravity * delta
 	move_and_slide()
