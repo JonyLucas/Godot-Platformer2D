@@ -133,4 +133,5 @@ texture = ExtResource("2_1rbkr")
 lifetime = 0.3
 one_shot = true
 
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_walk_animated_changed"]
 [connection signal="body_entered" from="DashArea" to="." method="_on_dash_area_entered"]

@@ -17,6 +17,7 @@ var current_state = state.NORMAL
 var start_dashing = false
 var level_manager
 var player_death_scene = preload("res://scenes/player_death.tscn")
+var footstep_particle = preload("res://scenes/footstep.tscn")
 
 signal player_death_signal
 
@@ -121,3 +122,10 @@ func die(is_enemy_hazard: bool):
 func _on_dash_area_entered(body:Node2D):
 	if body.is_in_group("enemy"):
 		body.die()
+
+
+func _on_walk_animated_changed():
+	if $AnimatedSprite2D.animation == "run" and $AnimatedSprite2D.frame == 0:
+		var footstep = footstep_particle.instantiate()
+		get_parent().add_child(footstep)
+		footstep.global_position = global_position
