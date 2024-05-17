@@ -39,4 +39,5 @@ material = SubResource("CanvasItemMaterial_dq0jt")
 process_material = SubResource("ParticleProcessMaterial_wj4ua")
 texture = ExtResource("1_5um6g")
 lifetime = 20.0
+preprocess = 10.0
 draw_order = 0
