@@ -11,6 +11,7 @@ enum state { NORMAL, DASHING }
 @export var gravity = 300.0
 @export var jump_force = 200.0
 @export var jump_force_multiplier = 3.0
+var is_jumping = false
 var reset_coyote_timer = true
 var has_double_jump = true
 var current_state = state.NORMAL
@@ -38,9 +39,12 @@ func _process(delta):
 			process_dashing(delta)
 
 func get_move_direction() -> Vector2:	
-	var direction = Vector2()
+	var direction = Vector2(0,0)
 	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	direction.y = -jump_force if check_jump_condition() and Input.is_action_just_pressed("jump") else 0.0
+
+	if check_jump_condition() and Input.is_action_just_pressed("jump"):
+		velocity.y = -jump_force
+		is_jumping = true
 	
 	if Input.is_action_just_pressed("dash") and current_state == state.NORMAL:
 		current_state = state.DASHING
@@ -50,6 +54,10 @@ func get_move_direction() -> Vector2:
 
 func check_jump_condition() -> bool:
 	if is_on_floor():
+		if is_jumping:
+			spawn_footstep(2)
+			is_jumping = false
+		
 		reset_coyote_timer = true
 		has_double_jump = true
 		return true
@@ -126,6 +134,10 @@ func _on_dash_area_entered(body:Node2D):
 
 func _on_walk_animated_changed():
 	if $AnimatedSprite2D.animation == "run" and $AnimatedSprite2D.frame == 0:
-		var footstep = footstep_particle.instantiate()
-		get_parent().add_child(footstep)
-		footstep.global_position = global_position
+		spawn_footstep()
+
+func spawn_footstep(particle_scale: float = 1.0):
+	var footstep = footstep_particle.instantiate()
+	get_parent().add_child(footstep)
+	footstep.global_position = global_position
+	footstep.scale = Vector2(particle_scale, particle_scale)
