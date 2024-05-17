@@ -87,6 +87,7 @@ texture_filter = 1
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_d6otl")
 animation = &"idle"
+frame_progress = 0.362835
 
 [node name="CollectArea" type="Area2D" parent="."]
 collision_layer = 2

@@ -1,0 +1,101 @@
+[gd_scene load_steps=12 format=3 uid="uid://c5eshwo3vupy4"]
+
+[ext_resource type="Texture2D" uid="uid://5wnogitcfk36" path="res://sprites/particles.png" id="1_y8a38"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_va5nf"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_20rij"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, -96.0383), 0.0, 0.0, 0, 0, Vector2(1, 105.815), -85.7546, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_i8xy6"]
+curve = SubResource("Curve_20rij")
+
+[sub_resource type="Gradient" id="Gradient_w52vy"]
+offsets = PackedFloat32Array(0.00431034, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.392157)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s517x"]
+gradient = SubResource("Gradient_w52vy")
+
+[sub_resource type="Curve" id="Curve_swkmt"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.123077, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_5v2or"]
+width = 2048
+curve = SubResource("Curve_swkmt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fxqrb"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 3.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 25.0
+angular_velocity_min = 0.5
+angular_velocity_max = 1.0
+angular_velocity_curve = SubResource("CurveTexture_i8xy6")
+gravity = Vector3(0, -50, 0)
+scale_curve = SubResource("CurveTexture_5v2or")
+color_ramp = SubResource("GradientTexture1D_s517x")
+
+[sub_resource type="Animation" id="Animation_ejim3"]
+resource_name = "default"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7xr7c"]
+_data = {
+"default": SubResource("Animation_ejim3")
+}
+
+[node name="Footstep" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_va5nf")
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_fxqrb")
+texture = ExtResource("1_y8a38")
+one_shot = true
+explosiveness = 0.9
+randomness = 0.3
+fixed_fps = 60
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7xr7c")
+}
