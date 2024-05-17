@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddqyfteypb002"]
+
+[ext_resource type="Script" path="res://scripts/Camera.gd" id="1_jjpxf"]
+[ext_resource type="PackedScene" uid="uid://d3ttgbodpv3fd" path="res://scenes/clouds.tscn" id="2_1nkvk"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ykx57"]
+seed = 123
+
+[node name="Camera2D" type="Camera2D" groups=["camera"]]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 0.5
+drag_bottom_margin = 0.5
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("1_jjpxf")
+background_color = Color(0.87451, 0.964706, 0.960784, 1)
+shake_noise = SubResource("FastNoiseLite_ykx57")
+noise_sample_step = 500.0
+
+[node name="Clouds" parent="." instance=ExtResource("2_1nkvk")]

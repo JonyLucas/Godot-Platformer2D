@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3ttgbodpv3fd"]
+
+[ext_resource type="Texture2D" uid="uid://b6qfhp4tqxo7e" path="res://sprites/clouds.png" id="1_5um6g"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dq0jt"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_tibw0"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.05, 1), 0.578503, 0.578503, 0, 0, Vector2(0.953846, 1), -0.716242, -0.716242, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_awf0m"]
+curve = SubResource("Curve_tibw0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wj4ua"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(200, 100, 1)
+angle_min = 180.0
+angle_max = 180.0
+spread = 0.0
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 0, 0)
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_awf0m")
+anim_offset_max = 1.0
+
+[node name="Clouds" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+z_index = -1
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_dq0jt")
+process_material = SubResource("ParticleProcessMaterial_wj4ua")
+texture = ExtResource("1_5um6g")
+lifetime = 20.0
+draw_order = 0
