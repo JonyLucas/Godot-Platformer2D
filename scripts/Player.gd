@@ -125,6 +125,7 @@ func die(is_enemy_hazard: bool):
 	death_scene.velocity = velocity
 	print(death_scene.global_position)
 	emit_signal("player_death_signal")
+	$DashArea/CollisionShape2D.call_deferred("set", "disabled", true)
 
 
 func _on_dash_area_entered(body:Node2D):
