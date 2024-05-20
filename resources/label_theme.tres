@@ -29,11 +29,12 @@ texture_margin_bottom = 5.0
 modulate_color = Color(0.709804, 0.709804, 0.709804, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6e5b2"]
-bg_color = Color(0, 0, 0, 0.784314)
+bg_color = Color(0.956863, 0.67451, 0.4, 0.501961)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
+shadow_size = 1
 anti_aliasing = false
 
 [resource]
