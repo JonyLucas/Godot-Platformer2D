@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqh7q56yahlv3"]
+[gd_scene load_steps=8 format=3 uid="uid://cqh7q56yahlv3"]
 
 [ext_resource type="Script" path="res://scripts/PauseMenu.gd" id="1_k6eap"]
 [ext_resource type="Theme" uid="uid://bhd8xgwk0olmx" path="res://resources/label_theme.tres" id="4_euh7q"]
+[ext_resource type="PackedScene" uid="uid://doq8mbkgsvtri" path="res://scenes/ui/options_menu.tscn" id="4_pncdi"]
 [ext_resource type="PackedScene" uid="uid://vgrl5iphvgy6" path="res://scenes/ui/animated_button.tscn" id="5_w2jpk"]
 
 [sub_resource type="Animation" id="Animation_dyblh"]
@@ -10,7 +11,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer:scale")
+tracks/0/path = NodePath("MainContainer:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,7 +27,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer:scale")
+tracks/0/path = NodePath("MainContainer:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -60,7 +61,7 @@ _data = {
 process_mode = 3
 script = ExtResource("1_k6eap")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MainContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -71,12 +72,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("4_euh7q")
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MainContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MainContainer/PanelContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -84,14 +85,14 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/PanelContainer/MarginContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 6
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MainContainer/PanelContainer/MarginContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
@@ -99,19 +100,19 @@ text = "PAUSED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContinueButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("5_w2jpk")]
+[node name="ContinueButton" parent="MainContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("5_w2jpk")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "CONTINUE"
 
-[node name="OptionButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("5_w2jpk")]
+[node name="OptionButton" parent="MainContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("5_w2jpk")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "OPTION"
 
-[node name="ExitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("5_w2jpk")]
+[node name="ExitButton" parent="MainContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("5_w2jpk")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -123,6 +124,9 @@ libraries = {
 }
 autoplay = "on_open"
 
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/OptionButton" to="." method="_on_option_pressed"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_pressed"]
+[node name="OptionsMenu" parent="." instance=ExtResource("4_pncdi")]
+visible = false
+
+[connection signal="pressed" from="MainContainer/PanelContainer/MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MainContainer/PanelContainer/MarginContainer/VBoxContainer/OptionButton" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="MainContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_pressed"]

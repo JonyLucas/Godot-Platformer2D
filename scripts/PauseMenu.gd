@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+@onready var options_menu = get_node("OptionsMenu")
+@onready var pause_container = get_node("MainContainer")
+
 func _ready():
 	get_tree().paused = true
 
@@ -9,7 +12,8 @@ func _on_continue_pressed():
 	
 
 func _on_option_pressed():
-	pass # Replace with function body.
+	options_menu.show()
+	pause_container.hide()
 
 func _on_exit_pressed():
 	$AnimationPlayer.play("on_close")
