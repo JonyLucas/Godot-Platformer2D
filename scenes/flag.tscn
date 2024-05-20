@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5jnj2wv11m8o"]
+[gd_scene load_steps=12 format=3 uid="uid://c5jnj2wv11m8o"]
 
 [ext_resource type="Texture2D" uid="uid://byr8jo4gukaq5" path="res://sprites/flag/tile_0111.png" id="1_2evdv"]
 [ext_resource type="Script" path="res://scripts/Flag.gd" id="1_qvfad"]
 [ext_resource type="Texture2D" uid="uid://deevjmp0i608i" path="res://sprites/flag/tile_0112.png" id="2_8mpe8"]
 [ext_resource type="Texture2D" uid="uid://swqksdry55or" path="res://sprites/flag/tile_0131.png" id="3_2sffn"]
+[ext_resource type="Texture2D" uid="uid://bsmcidc6j68dl" path="res://sprites/confetti.png" id="5_8o1hx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3uuv"]
 size = Vector2(14, 40)
@@ -21,6 +22,38 @@ animations = [{
 "name": &"default",
 "speed": 10.0
 }]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0vll5"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_j0ish"]
+_data = [Vector2(0, 0.499245), 0.0, 0.0, 0, 0, Vector2(0.341912, 1), 0.0, 0.0, 0, 0, Vector2(0.691176, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0672206), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_63upv"]
+curve = SubResource("Curve_j0ish")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ptn45"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+direction = Vector3(0, -200, 0)
+spread = 30.0
+initial_velocity_min = 150.0
+initial_velocity_max = 150.0
+angular_velocity_max = 360.0
+gravity = Vector3(0, 100, 0)
+damping_min = 50.0
+damping_max = 50.0
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_63upv")
+color = Color(1, 0, 0, 1)
+hue_variation_max = 1.0
+anim_speed_min = 2.0
+anim_speed_max = 5.0
+anim_offset_max = 1.0
 
 [node name="Flag" type="Node2D" groups=["goal"]]
 script = ExtResource("1_qvfad")
@@ -43,5 +76,18 @@ texture_filter = 1
 position = Vector2(0, -18)
 texture = ExtResource("3_2sffn")
 centered = false
+
+[node name="ConfettiParticles" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_0vll5")
+position = Vector2(3, -9)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_ptn45")
+texture = ExtResource("5_8o1hx")
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.6
+randomness = 0.4
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_entered"]
