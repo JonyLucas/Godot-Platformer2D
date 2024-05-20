@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgc5y751thnsg"]
+[gd_scene load_steps=7 format=3 uid="uid://cgc5y751thnsg"]
 
 [ext_resource type="Script" path="res://scripts/TutorialSign.gd" id="1_agm81"]
 [ext_resource type="Texture2D" uid="uid://bcfkblycu3e1i" path="res://sprites/tutorials_secondary.png" id="2_atvrn"]
@@ -8,7 +8,7 @@
 size = Vector2(32, 28)
 
 [sub_resource type="Animation" id="Animation_a288n"]
-resource_name = "on_interact"
+resource_name = "on_enter"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -22,51 +22,10 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PanelContainer:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_1afv2"]
-resource_name = "on_reset"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PanelContainer:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5),
-"transitions": PackedFloat32Array(3, 0.3, 3),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PanelContainer:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cxyff"]
 _data = {
-"on_interact": SubResource("Animation_a288n"),
-"on_reset": SubResource("Animation_1afv2")
+"on_enter": SubResource("Animation_a288n")
 }
 
 [node name="TutorialSign" type="Node2D" node_paths=PackedStringArray("label_text")]

@@ -1,16 +1,41 @@
-[gd_scene load_steps=3 format=3 uid="uid://cf2l2f1bkjxv0"]
+[gd_scene load_steps=7 format=3 uid="uid://cf2l2f1bkjxv0"]
 
 [ext_resource type="Theme" uid="uid://bhd8xgwk0olmx" path="res://resources/label_theme.tres" id="1_ckgrq"]
 [ext_resource type="Script" path="res://scripts/LevelComplete.gd" id="1_m0jbw"]
+[ext_resource type="Texture2D" uid="uid://du4sdihemw2at" path="res://sprites/coin/tile_0151.png" id="3_m0ytq"]
+[ext_resource type="PackedScene" uid="uid://vgrl5iphvgy6" path="res://scenes/ui/animated_button.tscn" id="4_upe5v"]
 
-[node name="LevelComplete" type="CanvasLayer"]
+[sub_resource type="Animation" id="Animation_a288n"]
+resource_name = "on_enter"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(3, 0.3, 3),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cxyff"]
+_data = {
+"on_enter": SubResource("Animation_a288n")
+}
+
+[node name="LevelComplete" type="CanvasLayer" node_paths=PackedStringArray("coin_label")]
 script = ExtResource("1_m0jbw")
+coin_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CoinLabel")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_left = 282.0
 offset_top = 159.0
 offset_right = 416.0
 offset_bottom = 217.0
+pivot_offset = Vector2(67, 29)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_ckgrq")
@@ -20,6 +45,7 @@ texture_filter = 1
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -27,9 +53,42 @@ size_flags_vertical = 4
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Level Completed!"
 
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 texture_filter = 1
 layout_mode = 2
-text = "Next Level"
+texture = ExtResource("3_m0ytq")
+
+[node name="CoinLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("1_ckgrq")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "0 / 100"
+
+[node name="NextButton" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_upe5v")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "NEXT LEVEL
+"
+
+[node name="RestartButton" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_upe5v")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "RESTART
+"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cxyff")
+}
+autoplay = "on_enter"

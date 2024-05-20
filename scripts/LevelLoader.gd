@@ -28,3 +28,6 @@ func change_level(level_index: int) -> void:
 
 func load_next_level() -> void:
 	change_level(current_level_index + 1)
+
+func restart_level() -> void:
+	change_level(current_level_index)
