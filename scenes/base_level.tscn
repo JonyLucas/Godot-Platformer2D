@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b1vl7xbkfilmq" path="res://scenes/player.tscn" id="2_58gl5"]
 
 [node name="BaseLevel" type="Node"]
+process_mode = 3
 script = ExtResource("1_bf0tg")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -22,9 +23,11 @@ format = 2
 [node name="Spikes" type="Node" parent="."]
 
 [node name="Enemies" type="Node" parent="."]
+process_mode = 1
 
 [node name="Coins" type="Node" parent="."]
 
 [node name="PlayerNode" type="Node" parent="."]
+process_mode = 1
 
 [node name="Player" parent="PlayerNode" instance=ExtResource("2_58gl5")]

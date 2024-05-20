@@ -1,25 +1,34 @@
 extends Node
 
 var player_scene = preload("res://scenes/player.tscn")
+var pause_scene = preload("res://scenes/ui/pause_menu.tscn")
 var level_completed_scene = preload("res://scenes/level_complete.tscn")
 var spawn_position = Vector2(0, 0)
+var pause_menu
 var player_ref
 var total_coins = 0
 var collected_coins = 0
 
 var is_level_completed: bool
-var is_paused: bool
 
 signal coin_collected_signal
 
 func _ready():
 	is_level_completed = false
-	is_paused = false
 	spawn_position = $PlayerNode/Player.global_position
 	register_player($PlayerNode/Player)
 	total_coins = get_tree().get_nodes_in_group("coin").size()
 	var goal_node = get_tree().get_first_node_in_group("goal")
 	goal_node.connect("win_condition", on_win_condition, CONNECT_ONE_SHOT)
+
+func _process(_delta):
+	if Input.is_action_just_pressed("pause"):
+		if get_tree().paused:
+			pause_menu._on_continue_pressed()
+		else:
+			pause_menu = pause_scene.instantiate()
+			get_parent().add_child(pause_menu)
+
 
 func register_player(playerNode):
 	player_ref = playerNode
