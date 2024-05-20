@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://1dt3tiodj8l2"]
+
+[ext_resource type="Texture2D" uid="uid://jgd8uvked00n" path="res://sprites/UIpackSheet_transparent.png" id="1_avsoh"]
+[ext_resource type="Script" path="res://scripts/MouseCursor.gd" id="1_nwlfx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8slhi"]
+atlas = ExtResource("1_avsoh")
+region = Rect2(108, 576, 9, 13)
+
+[sub_resource type="Animation" id="Animation_k66he"]
+resource_name = "click"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(3, 0.3, 3),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(1.8, 1.8), Vector2(1.5, 1.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_61kth"]
+_data = {
+"click": SubResource("Animation_k66he")
+}
+
+[node name="MouseCursor" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_nwlfx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_8slhi")
+centered = false
+
+[node name="Shadow" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0.310617, 0.310617, 0.310617, 1)
+show_behind_parent = true
+texture_filter = 1
+position = Vector2(0.4, 1)
+texture = SubResource("AtlasTexture_8slhi")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_61kth")
+}

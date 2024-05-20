@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/PlayerDeath.gd" id="1_2vmv1"]
 [ext_resource type="Texture2D" uid="uid://c8xrgcxjfy3dk" path="res://sprites/player/player_01.png" id="1_ej1mf"]
-[ext_resource type="Texture2D" uid="uid://5wnogitcfk36" path="res://sprites/particles.png" id="3_ewped"]
+[ext_resource type="Texture2D" uid="uid://5wnogitcfk36" path="res://sprites/particles/particles.png" id="3_ewped"]
 
 [sub_resource type="Animation" id="Animation_flfaq"]
 resource_name = "death_animation"

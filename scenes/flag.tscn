@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/Flag.gd" id="1_qvfad"]
 [ext_resource type="Texture2D" uid="uid://deevjmp0i608i" path="res://sprites/flag/tile_0112.png" id="2_8mpe8"]
 [ext_resource type="Texture2D" uid="uid://swqksdry55or" path="res://sprites/flag/tile_0131.png" id="3_2sffn"]
-[ext_resource type="Texture2D" uid="uid://bsmcidc6j68dl" path="res://sprites/confetti.png" id="5_8o1hx"]
+[ext_resource type="Texture2D" uid="uid://bsmcidc6j68dl" path="res://sprites/particles/confetti.png" id="5_tixnd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3uuv"]
 size = Vector2(14, 40)
@@ -84,7 +84,7 @@ position = Vector2(3, -9)
 emitting = false
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_ptn45")
-texture = ExtResource("5_8o1hx")
+texture = ExtResource("5_tixnd")
 lifetime = 3.0
 one_shot = true
 explosiveness = 0.6

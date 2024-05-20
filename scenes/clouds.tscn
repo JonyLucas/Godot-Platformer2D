@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://d3ttgbodpv3fd"]
 
-[ext_resource type="Texture2D" uid="uid://b6qfhp4tqxo7e" path="res://sprites/clouds.png" id="1_5um6g"]
+[ext_resource type="Texture2D" uid="uid://b6qfhp4tqxo7e" path="res://sprites/particles/clouds.png" id="1_3qhra"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dq0jt"]
 particles_animation = true
@@ -37,7 +37,7 @@ z_index = -1
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_dq0jt")
 process_material = SubResource("ParticleProcessMaterial_wj4ua")
-texture = ExtResource("1_5um6g")
+texture = ExtResource("1_3qhra")
 lifetime = 20.0
 preprocess = 10.0
 draw_order = 0
