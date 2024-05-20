@@ -17,6 +17,11 @@ func change_level(level_index: int) -> void:
 		$"/root/Main/LevelLoader".remove_child(current_level)
 		current_level.queue_free()
 	
+	var screen_trasition = $"/root/Main/TransitionLayer"
+	screen_trasition.visible = true
+	var transition_animation = $"/root/Main/TransitionLayer/AnimationPlayer"
+	transition_animation.play("end_transition")
+
 	current_level = levels[current_level_index].instantiate()
 	$"/root/Main/LevelLoader".add_child(current_level)
 

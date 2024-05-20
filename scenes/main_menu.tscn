@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cui28s4cthqif"]
+[gd_scene load_steps=7 format=3 uid="uid://cui28s4cthqif"]
 
 [ext_resource type="Theme" uid="uid://bhd8xgwk0olmx" path="res://resources/label_theme.tres" id="1_6ebn2"]
 [ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_p0xvw"]
 [ext_resource type="PackedScene" uid="uid://vgrl5iphvgy6" path="res://scenes/ui/animated_button.tscn" id="2_86sio"]
 [ext_resource type="TileSet" uid="uid://dilxupjg2sltw" path="res://resources/environment_tiles.tres" id="4_v4hsd"]
 [ext_resource type="PackedScene" uid="uid://ddqyfteypb002" path="res://scenes/camera.tscn" id="5_yh30p"]
+[ext_resource type="PackedScene" uid="uid://cg3sdlda87111" path="res://scenes/screen_transition.tscn" id="6_452dc"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_p0xvw")
@@ -19,6 +20,7 @@ layer_0/tile_data = PackedInt32Array(1245184, 65537, 10, 1310720, 65537, 10, 137
 
 [node name="DecorativeTileMap" type="TileMap" parent="."]
 texture_filter = 1
+position = Vector2(-1, 0)
 tile_set = ExtResource("4_v4hsd")
 format = 2
 layer_0/tile_data = PackedInt32Array(1310729, 1114112, 6, 1245193, 1179648, 6, 1179657, 1114112, 6, 1114121, 1114112, 4, 1179652, 1048576, 5, 1114116, 1179648, 6, 1048580, 1048576, 5, 983044, 1048576, 6, 917508, 1114112, 4, 1245194, 1245184, 6, 983043, 1179648, 5, 1114117, 1245184, 4, 1114118, 1245184, 6, 524293, 524288, 2, 524294, 589824, 2, 524297, 655360, 2, 524296, 589824, 2, 524295, 589824, 2, 1114134, 524288, 2, 1114135, 589824, 2, 1114136, 589824, 2, 1114137, 589824, 2, 1114138, 655360, 2, 1310731, 524288, 6, 1179681, 524288, 6, 851998, 524288, 6, 852000, 1048576, 4, 786464, 1114112, 6, 720928, 1048576, 5, 655392, 1114112, 4, 852003, 524288, 2, 852004, 589824, 2, 852005, 589824, 2, 852006, 655360, 2, 1179685, 786432, 3, 1245221, 786432, 3, 1310757, 786432, 3, 1114148, 917504, 0, 1114149, 851968, 0, 1114150, 983040, 0, 458777, 524288, 2, 458778, 589824, 2, 458779, 589824, 2, 458780, 589824, 2, 458781, 655360, 2, 393255, 524288, 2, 393256, 589824, 2, 393257, 655360, 2)
@@ -71,6 +73,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Exit"
 
+[node name="TransitionLayer" parent="." instance=ExtResource("6_452dc")]
+visible = false
+
+[node name="TransitionTimer" type="Timer" parent="."]
+
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/OptionButton" to="." method="_on_option_button_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="timeout" from="TransitionTimer" to="." method="_on_transition_timeout"]
