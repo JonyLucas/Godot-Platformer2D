@@ -18,6 +18,8 @@ texture_filter = 1
 tile_set = ExtResource("1_vpdht")
 format = 2
 
+[node name="Signs" type="Node" parent="."]
+
 [node name="Goal" type="Node" parent="."]
 process_mode = 1
 

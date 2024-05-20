@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgc5y751thnsg"]
+
+[ext_resource type="Script" path="res://scripts/TutorialSign.gd" id="1_agm81"]
+[ext_resource type="Texture2D" uid="uid://bcfkblycu3e1i" path="res://sprites/tutorials_secondary.png" id="2_atvrn"]
+[ext_resource type="Theme" uid="uid://bhd8xgwk0olmx" path="res://resources/label_theme.tres" id="3_4ypds"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htl6g"]
+size = Vector2(32, 28)
+
+[node name="TutorialSign" type="Node2D" node_paths=PackedStringArray("label_text")]
+script = ExtResource("1_agm81")
+tutorial_text = "This is a tutorial"
+label_text = NodePath("PanelContainer/MarginContainer/TutorialText")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_atvrn")
+offset = Vector2(0, -10)
+hframes = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -10)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_htl6g")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -76.0
+offset_right = 52.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_4ypds")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="TutorialText" type="Label" parent="PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+autowrap_mode = 3
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]

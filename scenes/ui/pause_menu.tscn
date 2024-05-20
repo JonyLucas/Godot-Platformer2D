@@ -5,22 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://doq8mbkgsvtri" path="res://scenes/ui/options_menu.tscn" id="4_pncdi"]
 [ext_resource type="PackedScene" uid="uid://vgrl5iphvgy6" path="res://scenes/ui/animated_button.tscn" id="5_w2jpk"]
 
-[sub_resource type="Animation" id="Animation_dyblh"]
-resource_name = "on_open"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainContainer:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.5),
-"transitions": PackedFloat32Array(0.3, 1, 3),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_fvit6"]
 resource_name = "on_close"
 length = 0.5
@@ -35,6 +19,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.3, 1, 3),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dyblh"]
+resource_name = "on_open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainContainer:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(0.3, 1, 3),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gx26v"]

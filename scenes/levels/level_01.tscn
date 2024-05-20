@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dl6xscge5jymk"]
+[gd_scene load_steps=8 format=3 uid="uid://dl6xscge5jymk"]
 
 [ext_resource type="PackedScene" uid="uid://i3wsgqyvc1ne" path="res://scenes/base_level.tscn" id="1_0o6vs"]
 [ext_resource type="PackedScene" uid="uid://c5jnj2wv11m8o" path="res://scenes/flag.tscn" id="2_7tpf7"]
 [ext_resource type="PackedScene" uid="uid://cbcu0jrby1esd" path="res://scenes/spikes.tscn" id="2_b0g8i"]
+[ext_resource type="PackedScene" uid="uid://cgc5y751thnsg" path="res://scenes/tutorial_sign.tscn" id="2_fnwr7"]
 [ext_resource type="PackedScene" uid="uid://b3gxef2x2otc0" path="res://scenes/spike_enemy.tscn" id="3_7bge1"]
 [ext_resource type="PackedScene" uid="uid://dyk268xdqq7vr" path="res://scenes/coin.tscn" id="4_8rv0m"]
 [ext_resource type="PackedScene" uid="uid://wdncvmwpu7hb" path="res://scenes/enemy_spawner.tscn" id="5_fpsnm"]
@@ -14,6 +15,9 @@ layer_0/tile_data = PackedInt32Array(131067, 65537, 10, 131068, 65537, 10, 13106
 
 [node name="DecorativeTileMap" parent="." index="1"]
 layer_0/tile_data = PackedInt32Array(-196616, 1048576, 4, -262152, 1048576, 4, -327688, 1179648, 6, -393224, 1114112, 4, -327687, 1245184, 6, -589799, 1114112, 6, -655335, 1048576, 6, -786407, 1114112, 4, -655336, 1179648, 4, -720871, 1048576, 5, -589801, 262144, 6, -393203, 262144, 6, -3, 262144, 6, -196617, 262144, 6, -524282, 327680, 6, -983005, 327680, 6, -589798, 524288, 6, -393204, 524288, 6, -65532, 524288, 6, -720829, 786432, 3, -786365, 786432, 3, -851902, 917504, 0, -851901, 851968, 0, -851900, 983040, 0, -982993, 1048576, 4, -1048529, 1179648, 6, -1114065, 1114112, 4, -1048528, 1245184, 6, -982995, 262144, 6)
+
+[node name="TutorialSign" parent="Signs" index="0" instance=ExtResource("2_fnwr7")]
+position = Vector2(-96, -48)
 
 [node name="Flag" parent="Goal" index="0" instance=ExtResource("2_7tpf7")]
 position = Vector2(1168, -224)
@@ -300,3 +304,6 @@ position = Vector2(416, -144)
 
 [node name="Coin4" parent="Coins" index="3" instance=ExtResource("4_8rv0m")]
 position = Vector2(448, -240)
+
+[node name="Player" parent="PlayerNode" index="0"]
+position = Vector2(8, 0)
