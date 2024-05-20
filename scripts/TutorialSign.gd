@@ -13,7 +13,7 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("interact") and can_interact:
-		panel_container.visible = true
+		$AnimationPlayer.play("on_interact")
 
 func _on_body_entered(_body:Node2D):
 	$Sprite2D.frame = 1
@@ -23,4 +23,4 @@ func _on_body_entered(_body:Node2D):
 func _on_body_exited(_body:Node2D):
 	$Sprite2D.frame = 0
 	can_interact = false
-	panel_container.visible = false
+	$AnimationPlayer.play("on_reset")
