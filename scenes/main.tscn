@@ -15,4 +15,3 @@ script = ExtResource("2_gi4d3")
 levels = Array[PackedScene]([ExtResource("1_k2m3o"), ExtResource("4_xbg2s")])
 
 [node name="TransitionLayer" parent="." instance=ExtResource("5_cde2s")]
-visible = false

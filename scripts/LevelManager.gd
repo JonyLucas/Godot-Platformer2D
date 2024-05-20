@@ -21,8 +21,8 @@ func _ready():
 	var goal_node = get_tree().get_first_node_in_group("goal")
 	goal_node.connect("win_condition", on_win_condition, CONNECT_ONE_SHOT)
 
-func _process(_delta):
-	if Input.is_action_just_pressed("pause"):
+func _unhandled_input(event):
+	if event.is_action_pressed("pause"):
 		if get_tree().paused:
 			pause_menu._on_continue_pressed()
 		else:

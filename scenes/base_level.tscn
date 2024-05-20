@@ -19,13 +19,16 @@ tile_set = ExtResource("1_vpdht")
 format = 2
 
 [node name="Goal" type="Node" parent="."]
+process_mode = 1
 
 [node name="Spikes" type="Node" parent="."]
+process_mode = 1
 
 [node name="Enemies" type="Node" parent="."]
 process_mode = 1
 
 [node name="Coins" type="Node" parent="."]
+process_mode = 1
 
 [node name="PlayerNode" type="Node" parent="."]
 process_mode = 1

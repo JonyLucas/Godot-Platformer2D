@@ -11,7 +11,8 @@ func _ready():
 func change_level(level_index: int) -> void:
 	current_level_index = level_index
 	if current_level_index >= levels.size():
-		current_level_index = 0
+		get_tree().change_scene_to_file("res://scenes/ui/game_complete.tscn")
+		return
 	
 	if current_level != null:
 		$"/root/Main/LevelLoader".remove_child(current_level)
