@@ -1,6 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2u37slhgpldr"]
+[gd_scene load_steps=16 format=3 uid="uid://b2u37slhgpldr"]
 
 [ext_resource type="Texture2D" uid="uid://dj6p58o01b54o" path="res://sprites/enemy/tile_0016.png" id="1_o8egj"]
+[ext_resource type="Script" path="res://scripts/RandomAudioStreamPlayer.gd" id="2_nvvqy"]
+[ext_resource type="AudioStream" uid="uid://db4ag1uyww1cb" path="res://audio/impactMetal_heavy_000.ogg" id="3_as173"]
+[ext_resource type="AudioStream" uid="uid://cu6mwu4tseepq" path="res://audio/impactMetal_heavy_001.ogg" id="4_wn23p"]
+[ext_resource type="AudioStream" uid="uid://ck3ub0nu12r8k" path="res://audio/impactMetal_heavy_002.ogg" id="5_7btuj"]
+[ext_resource type="AudioStream" uid="uid://dmffem5mtea88" path="res://audio/impactMetal_heavy_003.ogg" id="6_gjq7j"]
+[ext_resource type="AudioStream" uid="uid://dndtxxubgawrg" path="res://audio/impactMetal_heavy_004.ogg" id="7_wg7og"]
+[ext_resource type="AudioStream" uid="uid://lwai3yertajo" path="res://audio/impactMining_000.ogg" id="8_4gw0l"]
+[ext_resource type="AudioStream" uid="uid://xo328dtsmyar" path="res://audio/impactMining_001.ogg" id="9_6ibii"]
+[ext_resource type="AudioStream" uid="uid://baipwyykid2vf" path="res://audio/impactMining_002.ogg" id="10_08exb"]
+[ext_resource type="AudioStream" uid="uid://b8pek6kerg7fv" path="res://audio/impactMining_003.ogg" id="11_7btb0"]
+[ext_resource type="AudioStream" uid="uid://dntsjupvotc5u" path="res://audio/impactMining_004.ogg" id="12_7dtgw"]
 
 [sub_resource type="Curve" id="Curve_7n8ag"]
 max_value = 1.25
@@ -35,6 +46,34 @@ tracks/1/keys = {
 "method": &"queue_free"
 }]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Audio/DeathMetalSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio/ImpactMiningSound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b1up2"]
 _data = {
@@ -61,3 +100,53 @@ libraries = {
 "": SubResource("AnimationLibrary_b1up2")
 }
 autoplay = "enemy_death_animation"
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="DeathMetalSound" type="Node" parent="Audio"]
+script = ExtResource("2_nvvqy")
+simultanous_stream_players = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio/DeathMetalSound"]
+stream = ExtResource("3_as173")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Audio/DeathMetalSound"]
+stream = ExtResource("4_wn23p")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Audio/DeathMetalSound"]
+stream = ExtResource("5_7btuj")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Audio/DeathMetalSound"]
+stream = ExtResource("6_gjq7j")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="Audio/DeathMetalSound"]
+stream = ExtResource("7_wg7og")
+bus = &"SFX"
+
+[node name="ImpactMiningSound" type="Node" parent="Audio"]
+script = ExtResource("2_nvvqy")
+simultanous_stream_players = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio/ImpactMiningSound"]
+stream = ExtResource("8_4gw0l")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Audio/ImpactMiningSound"]
+stream = ExtResource("9_6ibii")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Audio/ImpactMiningSound"]
+stream = ExtResource("10_08exb")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Audio/ImpactMiningSound"]
+stream = ExtResource("11_7btb0")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="Audio/ImpactMiningSound"]
+stream = ExtResource("12_7dtgw")
+bus = &"SFX"

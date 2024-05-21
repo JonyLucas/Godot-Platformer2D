@@ -12,4 +12,3 @@ func play() -> void:
 		if enable_pitch_randomization:
 			audio_children[i].pitch_scale = randf_range(min_pitch_randomization, max_pitch_randomization)
 		audio_children[i].play()
-
