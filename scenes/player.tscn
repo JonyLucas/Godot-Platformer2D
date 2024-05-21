@@ -134,36 +134,57 @@ one_shot = true
 
 [node name="FootstepSFX" type="Node" parent="Audio"]
 script = ExtResource("6_7gklf")
+simultanous_stream_players = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio/FootstepSFX"]
 stream = ExtResource("6_hx51f")
+volume_db = -10.0
+bus = &"SFX"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Audio/FootstepSFX"]
 stream = ExtResource("7_dha4o")
+volume_db = -10.0
+bus = &"SFX"
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Audio/FootstepSFX"]
 stream = ExtResource("8_y10ge")
+volume_db = -10.0
+bus = &"SFX"
 
 [node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Audio/FootstepSFX"]
 stream = ExtResource("9_ks1vl")
+volume_db = -10.0
+bus = &"SFX"
 
 [node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="Audio/FootstepSFX"]
 stream = ExtResource("10_wopkx")
+volume_db = -10.0
+bus = &"SFX"
 
 [node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="Audio/FootstepSFX"]
 stream = ExtResource("12_2p6jh")
+volume_db = -10.0
+bus = &"SFX"
 
 [node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="Audio/FootstepSFX"]
 stream = ExtResource("13_1iga1")
+volume_db = -10.0
+bus = &"SFX"
 
 [node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="Audio/FootstepSFX"]
 stream = ExtResource("14_n8r4r")
+volume_db = -10.0
+bus = &"SFX"
 
 [node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="Audio/FootstepSFX"]
 stream = ExtResource("15_g2do6")
+volume_db = -10.0
+bus = &"SFX"
 
 [node name="AudioStreamPlayer10" type="AudioStreamPlayer" parent="Audio/FootstepSFX"]
 stream = ExtResource("16_qt3f6")
+volume_db = -10.0
+bus = &"SFX"
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_walk_animated_changed"]
 [connection signal="body_entered" from="DashArea" to="." method="_on_dash_area_entered"]
