@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 enum state { NORMAL, DASHING }
 
+@export var footstep_audio: Node
 @export var speed_acceleration = 100.0
 @export var max_speed = 500.0
 @export var max_dash_speed = 1000.0
@@ -142,3 +143,5 @@ func spawn_footstep(particle_scale: float = 1.0):
 	get_parent().add_child(footstep)
 	footstep.global_position = global_position
 	footstep.scale = Vector2(particle_scale, particle_scale)
+	if footstep_audio:
+		footstep_audio.play()

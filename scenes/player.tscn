@@ -1,10 +1,21 @@
-[gd_scene load_steps=14 format=3 uid="uid://b1vl7xbkfilmq"]
+[gd_scene load_steps=25 format=3 uid="uid://b1vl7xbkfilmq"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_xilro"]
 [ext_resource type="Texture2D" uid="uid://c8xrgcxjfy3dk" path="res://sprites/player/player_01.png" id="2_1rbkr"]
 [ext_resource type="Texture2D" uid="uid://bi1r410sxynbr" path="res://sprites/player/player_02.png" id="3_blueq"]
 [ext_resource type="PackedScene" uid="uid://ddqyfteypb002" path="res://scenes/camera.tscn" id="4_omkyh"]
 [ext_resource type="Shader" path="res://shaders/trail.gdshader" id="5_56e42"]
+[ext_resource type="Script" path="res://scripts/RandomAudioStreamPlayer.gd" id="6_7gklf"]
+[ext_resource type="AudioStream" uid="uid://bnbqan1shrkmi" path="res://audio/footstep_grass_000.ogg" id="6_hx51f"]
+[ext_resource type="AudioStream" uid="uid://c70mwb4vq7hq5" path="res://audio/footstep_grass_001.ogg" id="7_dha4o"]
+[ext_resource type="AudioStream" uid="uid://bamkl6qs2jxll" path="res://audio/footstep_grass_002.ogg" id="8_y10ge"]
+[ext_resource type="AudioStream" uid="uid://dqa8atdscvj4x" path="res://audio/footstep_grass_003.ogg" id="9_ks1vl"]
+[ext_resource type="AudioStream" uid="uid://b7mrvgrwtgg5a" path="res://audio/footstep_grass_004.ogg" id="10_wopkx"]
+[ext_resource type="AudioStream" uid="uid://cjjseijiavbc5" path="res://audio/footstep_concrete_000.ogg" id="12_2p6jh"]
+[ext_resource type="AudioStream" uid="uid://cmsdg3ln6rryw" path="res://audio/footstep_concrete_001.ogg" id="13_1iga1"]
+[ext_resource type="AudioStream" uid="uid://jme481tw4jyv" path="res://audio/footstep_concrete_002.ogg" id="14_n8r4r"]
+[ext_resource type="AudioStream" uid="uid://dsc8so51y2vxe" path="res://audio/footstep_concrete_003.ogg" id="15_g2do6"]
+[ext_resource type="AudioStream" uid="uid://kil3au4ie6vt" path="res://audio/footstep_concrete_004.ogg" id="16_qt3f6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lihqt"]
 height = 26.0
@@ -61,10 +72,11 @@ particle_flag_disable_z = true
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_8iql6")
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("footstep_audio") groups=["player"]]
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_xilro")
+footstep_audio = NodePath("Audio/FootstepSFX")
 speed_acceleration = 1000.0
 max_speed = 200.0
 gravity = 1500.0
@@ -117,6 +129,41 @@ process_material = SubResource("ParticleProcessMaterial_24o0s")
 texture = ExtResource("2_1rbkr")
 lifetime = 0.3
 one_shot = true
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="FootstepSFX" type="Node" parent="Audio"]
+script = ExtResource("6_7gklf")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio/FootstepSFX"]
+stream = ExtResource("6_hx51f")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Audio/FootstepSFX"]
+stream = ExtResource("7_dha4o")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Audio/FootstepSFX"]
+stream = ExtResource("8_y10ge")
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Audio/FootstepSFX"]
+stream = ExtResource("9_ks1vl")
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="Audio/FootstepSFX"]
+stream = ExtResource("10_wopkx")
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="Audio/FootstepSFX"]
+stream = ExtResource("12_2p6jh")
+
+[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="Audio/FootstepSFX"]
+stream = ExtResource("13_1iga1")
+
+[node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="Audio/FootstepSFX"]
+stream = ExtResource("14_n8r4r")
+
+[node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="Audio/FootstepSFX"]
+stream = ExtResource("15_g2do6")
+
+[node name="AudioStreamPlayer10" type="AudioStreamPlayer" parent="Audio/FootstepSFX"]
+stream = ExtResource("16_qt3f6")
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_walk_animated_changed"]
 [connection signal="body_entered" from="DashArea" to="." method="_on_dash_area_entered"]
