@@ -5,9 +5,9 @@ resource_name = "HighPassFilter"
 cutoff_hz = 4000.0
 resonance = 0.3
 
-[sub_resource type="AudioEffectHighPassFilter" id="AudioEffectHighPassFilter_l3w7t"]
-resource_name = "HighPassFilter"
-cutoff_hz = 1225.0
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_qftjr"]
+resource_name = "LowPassFilter"
+cutoff_hz = 2500.0
 
 [sub_resource type="AudioEffectChorus" id="AudioEffectChorus_aimkx"]
 resource_name = "Chorus"
@@ -41,7 +41,7 @@ bus/4/mute = false
 bus/4/bypass_fx = false
 bus/4/volume_db = 0.0
 bus/4/send = &"SFX"
-bus/4/effect/0/effect = SubResource("AudioEffectHighPassFilter_l3w7t")
+bus/4/effect/0/effect = SubResource("AudioEffectLowPassFilter_qftjr")
 bus/4/effect/0/enabled = true
 bus/4/effect/1/effect = SubResource("AudioEffectChorus_aimkx")
 bus/4/effect/1/enabled = true
