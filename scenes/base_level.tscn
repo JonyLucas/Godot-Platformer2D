@@ -39,6 +39,8 @@ process_mode = 1
 [node name="Player" parent="PlayerNode" instance=ExtResource("2_58gl5")]
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("4_w3wpt")
+volume_db = -5.0
 autoplay = true
 bus = &"Music"
