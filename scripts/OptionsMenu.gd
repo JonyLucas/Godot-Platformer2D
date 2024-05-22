@@ -9,10 +9,19 @@ var is_full_screen = false
 func _ready():
 	music_control_volume.connect("on_volume_change", _on_music_volume_changed, CONNECT_DEFERRED)
 	sfx_control_volume.connect("on_volume_change", _on_sfx_volume_changed, CONNECT_DEFERRED)
+	update_volume()
 
 func on_enable():
 	$AnimationPlayer.play("on_open")
 	pass
+
+func update_volume():
+	music_control_volume.current_volume = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")))
+	music_control_volume.change_volume(0)
+
+	sfx_control_volume.current_volume = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
+	sfx_control_volume.change_volume(0)
+
 
 func _on_window_mode_pressed():
 	is_full_screen = !is_full_screen

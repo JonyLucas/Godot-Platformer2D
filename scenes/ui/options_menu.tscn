@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://doq8mbkgsvtri"]
+[gd_scene load_steps=8 format=3 uid="uid://doq8mbkgsvtri"]
 
 [ext_resource type="Script" path="res://scripts/OptionsMenu.gd" id="1_5k4mn"]
 [ext_resource type="Theme" uid="uid://bhd8xgwk0olmx" path="res://resources/label_theme.tres" id="2_4yugg"]
 [ext_resource type="PackedScene" uid="uid://vgrl5iphvgy6" path="res://scenes/ui/animated_button.tscn" id="3_ce63o"]
 [ext_resource type="Script" path="res://scripts/VolumeControl.gd" id="4_qmk2w"]
-[ext_resource type="AudioStream" uid="uid://d2xth1leqw40m" path="res://audio/click_002.ogg" id="5_a7o3p"]
 
 [sub_resource type="Animation" id="Animation_fvit6"]
 resource_name = "on_close"
@@ -131,30 +130,29 @@ text = "Music Volume"
 layout_mode = 2
 script = ExtResource("4_qmk2w")
 
-[node name="MinusButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer/MusicControl"]
-texture_filter = 1
-custom_minimum_size = Vector2(30, 0)
+[node name="MinusButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer/MusicControl" instance=ExtResource("3_ce63o")]
+custom_minimum_size = Vector2(30, 24)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "-"
+disable_hover_animation = true
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer/MusicControl"]
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="PlusButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer/MusicControl"]
-texture_filter = 1
-custom_minimum_size = Vector2(30, 0)
+[node name="PlusButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer/MusicControl" instance=ExtResource("3_ce63o")]
+custom_minimum_size = Vector2(30, 24)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "+"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer/MusicControl"]
-stream = ExtResource("5_a7o3p")
-bus = &"UI"
+disable_hover_animation = true
 
 [node name="SFXContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
@@ -170,30 +168,29 @@ text = "SFX Volume"
 layout_mode = 2
 script = ExtResource("4_qmk2w")
 
-[node name="MinusButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SFXContainer/SFXControl"]
-texture_filter = 1
-custom_minimum_size = Vector2(30, 0)
+[node name="MinusButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SFXContainer/SFXControl" instance=ExtResource("3_ce63o")]
+custom_minimum_size = Vector2(30, 24)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "-"
+disable_hover_animation = true
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SFXContainer/SFXControl"]
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="PlusButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SFXContainer/SFXControl"]
-texture_filter = 1
-custom_minimum_size = Vector2(30, 0)
+[node name="PlusButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SFXContainer/SFXControl" instance=ExtResource("3_ce63o")]
+custom_minimum_size = Vector2(30, 24)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "+"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SFXContainer/SFXControl"]
-stream = ExtResource("5_a7o3p")
-bus = &"UI"
+disable_hover_animation = true
 
 [node name="BackButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_ce63o")]
 layout_mode = 2
