@@ -29,6 +29,7 @@ _data = {
 }
 
 [node name="MouseCursor" type="CanvasLayer"]
+process_mode = 3
 layer = 10
 script = ExtResource("1_nwlfx")
 

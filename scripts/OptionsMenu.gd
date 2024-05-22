@@ -8,7 +8,7 @@ var is_full_screen = false
 
 func _ready():
 	music_control_volume.connect("on_volume_change", _on_music_volume_changed, CONNECT_DEFERRED)
-	music_control_volume.connect("on_volume_change", _on_sfx_volume_changed, CONNECT_DEFERRED)
+	sfx_control_volume.connect("on_volume_change", _on_sfx_volume_changed, CONNECT_DEFERRED)
 
 func on_enable():
 	$AnimationPlayer.play("on_open")
@@ -26,7 +26,9 @@ func _on_back_button_pressed():
 	get_parent().get_node("AnimationPlayer").play("on_open")
 
 func _on_music_volume_changed(value):
+	print("Music volume changed to: ", value)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(value))
 
 func _on_sfx_volume_changed(value):
+	print("SFX volume changed to: ", value)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(value))
