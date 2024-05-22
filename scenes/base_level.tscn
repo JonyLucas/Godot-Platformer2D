@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://i3wsgqyvc1ne"]
+[gd_scene load_steps=5 format=3 uid="uid://i3wsgqyvc1ne"]
 
 [ext_resource type="Script" path="res://scripts/LevelManager.gd" id="1_bf0tg"]
 [ext_resource type="TileSet" uid="uid://dilxupjg2sltw" path="res://resources/environment_tiles.tres" id="1_vpdht"]
 [ext_resource type="PackedScene" uid="uid://b1vl7xbkfilmq" path="res://scenes/player.tscn" id="2_58gl5"]
+[ext_resource type="AudioStream" uid="uid://c6l6mgjy2fwv5" path="res://audio/Juhani Junkala [Chiptune Adventures] 2. Stage 2.ogg" id="4_w3wpt"]
 
 [node name="BaseLevel" type="Node"]
 process_mode = 3
@@ -36,3 +37,7 @@ process_mode = 1
 process_mode = 1
 
 [node name="Player" parent="PlayerNode" instance=ExtResource("2_58gl5")]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_w3wpt")
+autoplay = true

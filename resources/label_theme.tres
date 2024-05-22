@@ -12,6 +12,7 @@ texture_margin_left = 5.0
 texture_margin_top = 7.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
+expand_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y53oy"]
 texture = ExtResource("1_odsjj")
@@ -19,6 +20,7 @@ texture_margin_left = 5.0
 texture_margin_top = 7.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
+expand_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pubbo"]
 texture = ExtResource("1_odsjj")
@@ -26,6 +28,7 @@ texture_margin_left = 5.0
 texture_margin_top = 7.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
+expand_margin_bottom = 4.0
 modulate_color = Color(0.709804, 0.709804, 0.709804, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6e5b2"]

@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://doq8mbkgsvtri"]
+[gd_scene load_steps=9 format=3 uid="uid://doq8mbkgsvtri"]
 
 [ext_resource type="Script" path="res://scripts/OptionsMenu.gd" id="1_5k4mn"]
 [ext_resource type="Theme" uid="uid://bhd8xgwk0olmx" path="res://resources/label_theme.tres" id="2_4yugg"]
 [ext_resource type="PackedScene" uid="uid://vgrl5iphvgy6" path="res://scenes/ui/animated_button.tscn" id="3_ce63o"]
+[ext_resource type="Script" path="res://scripts/VolumeControl.gd" id="4_qmk2w"]
+[ext_resource type="AudioStream" uid="uid://d2xth1leqw40m" path="res://audio/click_002.ogg" id="5_a7o3p"]
 
 [sub_resource type="Animation" id="Animation_fvit6"]
 resource_name = "on_close"
@@ -66,7 +68,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(320, 180)
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -80,10 +81,10 @@ size_flags_vertical = 4
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
 custom_minimum_size = Vector2(120, 0)
@@ -100,25 +101,104 @@ text = "OPTIONS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="WindowedContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/WindowedContainer"]
 texture_filter = 1
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Window Mode"
 
-[node name="WindowModeButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_ce63o")]
+[node name="WindowModeButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/WindowedContainer" instance=ExtResource("3_ce63o")]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 text = "WINDOWED"
 
+[node name="MusicContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Music Volume"
+
+[node name="MusicControl" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer"]
+layout_mode = 2
+script = ExtResource("4_qmk2w")
+
+[node name="MinusButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer/MusicControl"]
+texture_filter = 1
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "-"
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer/MusicControl"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "10"
+
+[node name="PlusButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer/MusicControl"]
+texture_filter = 1
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "+"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer/MusicControl"]
+stream = ExtResource("5_a7o3p")
+bus = &"UI"
+
+[node name="SFXContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SFXContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SFX Volume"
+
+[node name="SFXControl" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SFXContainer"]
+layout_mode = 2
+script = ExtResource("4_qmk2w")
+
+[node name="MinusButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SFXContainer/SFXControl"]
+texture_filter = 1
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "-"
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SFXContainer/SFXControl"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "10"
+
+[node name="PlusButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SFXContainer/SFXControl"]
+texture_filter = 1
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "+"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SFXContainer/SFXControl"]
+stream = ExtResource("5_a7o3p")
+bus = &"UI"
+
 [node name="BackButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_ce63o")]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Back"
+text = "BACK"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -126,5 +206,5 @@ libraries = {
 }
 autoplay = "on_open"
 
-[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/WindowModeButton" to="." method="_on_window_mode_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/WindowedContainer/WindowModeButton" to="." method="_on_window_mode_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

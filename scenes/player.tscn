@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b1vl7xbkfilmq"]
+[gd_scene load_steps=26 format=3 uid="uid://b1vl7xbkfilmq"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_xilro"]
 [ext_resource type="Texture2D" uid="uid://c8xrgcxjfy3dk" path="res://sprites/player/player_01.png" id="2_1rbkr"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://jme481tw4jyv" path="res://audio/footstep_concrete_002.ogg" id="14_n8r4r"]
 [ext_resource type="AudioStream" uid="uid://dsc8so51y2vxe" path="res://audio/footstep_concrete_003.ogg" id="15_g2do6"]
 [ext_resource type="AudioStream" uid="uid://kil3au4ie6vt" path="res://audio/footstep_concrete_004.ogg" id="16_qt3f6"]
+[ext_resource type="AudioStream" uid="uid://cfhvmk54bn633" path="res://audio/impactBell_heavy_004.ogg" id="17_r237y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lihqt"]
 height = 26.0
@@ -185,6 +186,23 @@ bus = &"Footsteps"
 stream = ExtResource("16_qt3f6")
 volume_db = -3.0
 bus = &"Footsteps"
+
+[node name="DashSFX" type="Node" parent="Audio"]
+script = ExtResource("6_7gklf")
+simultanous_stream_players = 1
+enable_pitch_randomization = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio/DashSFX"]
+stream = ExtResource("17_r237y")
+bus = &"PlayerDash"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Audio/DashSFX"]
+stream = ExtResource("17_r237y")
+bus = &"PlayerDash"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Audio/DashSFX"]
+stream = ExtResource("17_r237y")
+bus = &"PlayerDash"
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_walk_animated_changed"]
 [connection signal="body_entered" from="DashArea" to="." method="_on_dash_area_entered"]

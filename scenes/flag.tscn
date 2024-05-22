@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5jnj2wv11m8o"]
+[gd_scene load_steps=13 format=3 uid="uid://c5jnj2wv11m8o"]
 
 [ext_resource type="Texture2D" uid="uid://byr8jo4gukaq5" path="res://sprites/flag/tile_0111.png" id="1_2evdv"]
 [ext_resource type="Script" path="res://scripts/Flag.gd" id="1_qvfad"]
 [ext_resource type="Texture2D" uid="uid://deevjmp0i608i" path="res://sprites/flag/tile_0112.png" id="2_8mpe8"]
 [ext_resource type="Texture2D" uid="uid://swqksdry55or" path="res://sprites/flag/tile_0131.png" id="3_2sffn"]
 [ext_resource type="Texture2D" uid="uid://bsmcidc6j68dl" path="res://sprites/particles/confetti.png" id="5_tixnd"]
+[ext_resource type="AudioStream" uid="uid://ch4ef140js5wp" path="res://audio/jingles_PIZZI10.ogg" id="6_u4nm1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3uuv"]
 size = Vector2(14, 40)
@@ -89,5 +90,12 @@ lifetime = 3.0
 one_shot = true
 explosiveness = 0.6
 randomness = 0.4
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_u4nm1")
+pitch_scale = 1.2
+bus = &"SFX"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_entered"]
