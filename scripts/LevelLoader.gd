@@ -18,16 +18,27 @@ func change_level(level_index: int) -> void:
 		$"/root/Main/LevelLoader".remove_child(current_level)
 		current_level.queue_free()
 	
-	var screen_trasition = $"/root/Main/TransitionLayer"
-	screen_trasition.visible = true
-	var transition_animation = $"/root/Main/TransitionLayer/AnimationPlayer"
-	transition_animation.play("end_transition")
+	_end_level_transition()
 
 	current_level = levels[current_level_index].instantiate()
 	$"/root/Main/LevelLoader".add_child(current_level)
+
+	_update_ui_canvas()
 
 func load_next_level() -> void:
 	change_level(current_level_index + 1)
 
 func restart_level() -> void:
 	change_level(current_level_index)
+
+func _update_ui_canvas() -> void:
+	var timer = get_tree().create_timer(1)
+	await timer.timeout
+	var ui_canvas = $"/root/Main/Canvas"
+	ui_canvas.update_level_manager()
+
+func _end_level_transition() -> void:
+	var screen_trasition = $"/root/Main/TransitionLayer"
+	screen_trasition.visible = false
+	var transition_animation = $"/root/Main/TransitionLayer/AnimationPlayer"
+	transition_animation.play("end_transition")

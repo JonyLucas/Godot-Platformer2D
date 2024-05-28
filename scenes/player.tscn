@@ -80,7 +80,7 @@ script = ExtResource("1_xilro")
 footstep_audio = NodePath("Audio/FootstepSFX")
 speed_acceleration = 1000.0
 max_speed = 200.0
-gravity = 600.0
+gravity = 500.0
 jump_force = 250.0
 jump_force_multiplier = 5.0
 

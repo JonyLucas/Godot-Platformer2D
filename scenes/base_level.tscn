@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b1vl7xbkfilmq" path="res://scenes/player.tscn" id="2_58gl5"]
 [ext_resource type="AudioStream" uid="uid://c6l6mgjy2fwv5" path="res://audio/Juhani Junkala [Chiptune Adventures] 2. Stage 2.ogg" id="4_w3wpt"]
 
-[node name="BaseLevel" type="Node"]
+[node name="BaseLevel" type="Node" groups=["level_manager"]]
 process_mode = 3
 script = ExtResource("1_bf0tg")
 
