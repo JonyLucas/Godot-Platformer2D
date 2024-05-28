@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dykgpa1v0ptg7"]
 
-[ext_resource type="PackedScene" uid="uid://dl6xscge5jymk" path="res://scenes/levels/level_01.tscn" id="1_k2m3o"]
+[ext_resource type="PackedScene" uid="uid://dl6xscge5jymk" path="res://scenes/levels/level_03.tscn" id="1_k2m3o"]
 [ext_resource type="Script" path="res://scripts/LevelLoader.gd" id="2_gi4d3"]
 [ext_resource type="PackedScene" uid="uid://bl05cjdene48l" path="res://scenes/ui/canvas.tscn" id="2_t6dd5"]
 [ext_resource type="PackedScene" uid="uid://djnvd67bo57vv" path="res://scenes/levels/level_02.tscn" id="4_xbg2s"]

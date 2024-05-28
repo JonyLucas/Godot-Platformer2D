@@ -121,7 +121,7 @@ func die(is_enemy_hazard: bool):
 
 	$"/root/Helpers".apply_camera_shake(0, 1)	
 	var death_scene = player_death_scene.instantiate()
-	get_parent().add_child(death_scene)
+	get_parent().call_deferred("add_child", death_scene)
 	death_scene.global_position = global_position
 	$AnimatedSprite2D.visible = false
 	death_scene.velocity = velocity

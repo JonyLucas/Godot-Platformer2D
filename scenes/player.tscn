@@ -55,7 +55,7 @@ animations = [{
 radius = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4yjkr"]
-size = Vector2(40, 12)
+size = Vector2(40, 20)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7yihc"]
 shader = ExtResource("5_56e42")
@@ -80,8 +80,8 @@ script = ExtResource("1_xilro")
 footstep_audio = NodePath("Audio/FootstepSFX")
 speed_acceleration = 1000.0
 max_speed = 200.0
-gravity = 1500.0
-jump_force = 500.0
+gravity = 600.0
+jump_force = 250.0
 jump_force_multiplier = 5.0
 
 [node name="CoyoteTimer" type="Timer" parent="."]

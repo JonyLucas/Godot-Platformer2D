@@ -10,7 +10,7 @@ var direction = Vector2.RIGHT
 var target_x_position = 0
 
 func _ready():
-	target_x_position = position.x + move_offset
+	target_x_position = position.x + (move_offset * direction.x)
 
 func _process(delta):
 	if is_spawning:
